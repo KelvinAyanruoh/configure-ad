@@ -8,7 +8,6 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Video Demonstration</h2>
 
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com)
 
 <h2>Environments and Technologies Used</h2>
 
@@ -50,7 +49,7 @@ After the VM is created and the DC private IP address is set to static, set Clie
 <img width="970" height="523" alt="image" src="https://github.com/user-attachments/assets/a56fca75-36e3-4b6b-8f93-554c35216a1e" />
 </p>
 <p>
-Confirm ping is successful and run ipconfig /all on client-1 and we should be able to the DC-1 private ip address in the result as seen below.
+Confirm that the ping is successful and run ipconfig /all on client-1. We should then be able to see the DC-1 private IP address in the result, as shown below.
 </p>
 <br />
 <img width="462" height="250" alt="image" src="https://github.com/user-attachments/assets/a52e037b-6ba1-494d-b8b1-639994d702b7" />
@@ -69,12 +68,7 @@ Confirm ping is successful and run ipconfig /all on client-1 and we should be ab
 - Step 1: Go to Server Manager, add Roles and Features 
 - Step 2: Check Active Directory Domain Services
 - Step 3: After VM is created, set Client-1’s DNS settings to DC-1’s Private IP address
-- Step 4: promote DC-1 to a domain controller
-
-
-
-
-
+- Step 4: Promote DC-1 to a domain controller
 
 
 <p>
@@ -114,10 +108,43 @@ The final step will restart your machine. After the restart machine should be in
 </p>
 <br />
 
+<h1>Deploy multiple users in AD (Azure)</h1>
+
+- Allow domain users to access the remote desktop
+- Log into Client-1 as mydomain.com\jane_admin
+- Open system properties
+- Click “Remote Desktop”
+- Allow “domain users” access to the remote desktop
+You can now log into Client-1 as a normal, non-administrative user.
+
+
+
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="966" height="391" alt="image" src="https://github.com/user-attachments/assets/4128b712-8f87-4cdb-a8e2-485fe59ae361" />
+
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Login to DC-1 as jane_admin
+Open PowerShell_ise as an administrator
+Create a new File and paste the contents of the script into it
+
+
 </p>
 <br />
+<p>
+<img width="1095" height="591" alt="image" src="https://github.com/user-attachments/assets/158622ab-58cd-4a7d-b224-6f37e7a0ee26" />
+
+</p>
+<p>
+Run the script and observe the accounts being created
+When finished, open ADUC and observe the accounts in the appropriate OU　(_EMPLOYEES)
+attempt to log into Client-1 with one of the accounts (take note of the password in the script)
+
+</p>
+<br />
+
+</p>
+<br />
+<p>
+<img width="1319" height="589" alt="image" src="https://github.com/user-attachments/assets/cad3a84b-0914-478c-bd9a-ac1f1d839906" />
+
